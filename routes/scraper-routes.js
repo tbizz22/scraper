@@ -8,6 +8,8 @@ module.exports = function (app) {
     app.get('/scrape', function (req, res) {
         axios.get('http://www.slickdeals.com').then(function (html) {
             const $ = cheerio.load(html.data);
+           
+        //    TODO: Sharpen focus of list items to not grab featured deals
             const listItems = $('div.fpItem');
             const insertData = [];
 
