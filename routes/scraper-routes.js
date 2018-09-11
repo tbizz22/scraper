@@ -8,23 +8,26 @@ module.exports = function (app) {
     app.get('/scrape', function (req, res) {
         axios.get('http://www.slickdeals.com').then(function (html) {
             const $ = cheerio.load(html.data);
-           
-        //    TODO: Sharpen focus of list items to not grab featured deals
+
+            //    TODO: Sharpen focus of list items to not grab featured deals
             const listItems = $('div.fpItem');
             const insertData = [];
 
             listItems.each(function (i, listItem) {
 
                 const title = $(listItem).find('div.itemImageLink').find('a.itemTitle').text();
-                const url = $(listItem).find('a.itemTitle').attr('href');
-                 const vendor = $(listItem).find('a.itemStore').text();
+                const refPath = $(listItem).find('a.itemTitle').attr('href');
+                const url = `www.slickdeals.com${refPath}`;
+                const vendor = $(listItem).find('a.itemStore').text();
                 const image = $(listItem).find('div.imageContainer').children().attr('src');
-                const price = $(listItem).find('div.itemPrice').text().trim();
+                // TODO: Fix this
+                const price = $(listItem).find('div.itemPrice').text().trim().replace(/\n/, '\\n').split('\\n')[0].trim();
                 const msrp = $(listItem).find('span.oldListPrice').text();
                 const popularity = $(listItem).find('div.likes').find('span.count').text();
                 const shipping = $(listItem).find('div.priceInfo').text();
+                
 
-                insertData.push({
+                db.Article.create({
                     title: title,
                     url: url,
                     vendor: vendor,
@@ -32,11 +35,15 @@ module.exports = function (app) {
                     price: price,
                     msrp: msrp,
                     popularity: popularity,
-                    shipping:shipping
+                    shipping: shipping                    
+                }).then(function (article) {
+                    console.log(article)
+                }).catch(function (err) {
+                    console.log(err)
                 })
             })
 
-            res.send(insertData)
+            res.send("Scrape Complete");
 
         })
     })
