@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const request = require('request');
+const axios = require('axios');
 const cheerio = require('cheerio')
 const bodyParser = require('body-parser');
 const logger = require("morgan");
