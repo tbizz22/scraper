@@ -9,7 +9,10 @@ $('#submit').on('click', function () {
     $.ajax({
         method: 'POST',
         url: '/user',
-        data: user
+        data: user,
+        success: function(uID) {
+            window.location.href = '/home/'+uID
+        }
     })
 
 })
