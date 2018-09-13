@@ -1,4 +1,4 @@
-$(document).on('click', '#submit', function () {
+$('#submit').on('click', function () {
     event.preventDefault();
 
     const user = {
