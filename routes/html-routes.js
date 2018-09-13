@@ -4,18 +4,18 @@ const db = require('../models')
 module.exports = function (app) {
     app.get("/", function (req, res) {
         res.render("user")
-            });
+    });
 
     app.post('/user', function (req, res, data) {
-        console.log(req.body)         
+        console.log(req.body)
 
- 
+
         db.User.create(req.body).then(function (dbUser) {
             res.json(dbUser)
             console.log(dbUser)
             const uID = dbUser._id
             res.send(uID)
-            
+
         }).catch(function (err) {
             // if the user already exists this gets that user
             // res.json(err)            
@@ -23,7 +23,7 @@ module.exports = function (app) {
             const dupKey = splitErr[1]
             // find the user based on the duplicate key in the user collection
             db.User.findOne({
-                email:dupKey
+                email: dupKey
             }).then(function (dbUser) {
                 console.log(dbUser)
                 const uID = dbUser._id
@@ -36,7 +36,15 @@ module.exports = function (app) {
 
     });
 
-    app.get('/home/:id', function(req, res) {
-        res.render('items');
+    app.get('/home/:id', function (req, res) {
+        db.Article.find({}).sort({
+            createdAt: -1
+        }).then(function (dbArticles) {
+            res.render('items', {
+                items: dbArticles
+            });
+        })
+
+      
     });
 }
