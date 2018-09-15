@@ -6,20 +6,13 @@ module.exports = function (app) {
         res.render("user")
     });
 
-    app.post('/user', function (req, res, data) {
+    app.post('/user', function (req, res) {
         console.log(req.body)
-
-
-        db.User.create(req.body).then(function (dbUser) {            
-            // console.log(dbUser)
-            const uIDn = dbUser._id;
-            // console.log('valueT: '+typeof(uID));
-            // console.log('value: '+(uID));
-            // res.send(uIDn)
-            res.json(uIDn)
+        db.User.create(req.body).then(function (dbUser) {
+            const uID = dbUser._id;
+            res.json(uID)
         }).catch(function (err) {
-            // if the user already exists this gets that user
-            // res.json(err)            
+            // if the user already exists this gets that user                     
             const splitErr = err.errmsg.split('"')
             const dupKey = splitErr[1]
             // find the user based on the duplicate key in the user collection
@@ -34,7 +27,6 @@ module.exports = function (app) {
                 console.log(err)
             })
         })
-
     });
 
     app.get('/home/:id', function (req, res) {
@@ -46,6 +38,6 @@ module.exports = function (app) {
             });
         })
 
-      
+
     });
 }
