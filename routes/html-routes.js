@@ -10,12 +10,13 @@ module.exports = function (app) {
         console.log(req.body)
 
 
-        db.User.create(req.body).then(function (dbUser) {
-            res.json(dbUser)
-            console.log(dbUser)
-            const uID = dbUser._id
-            res.send(uID)
-
+        db.User.create(req.body).then(function (dbUser) {            
+            // console.log(dbUser)
+            const uIDn = dbUser._id;
+            // console.log('valueT: '+typeof(uID));
+            // console.log('value: '+(uID));
+            // res.send(uIDn)
+            res.json(uIDn)
         }).catch(function (err) {
             // if the user already exists this gets that user
             // res.json(err)            

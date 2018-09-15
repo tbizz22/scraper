@@ -10,8 +10,8 @@ $('#submit').on('click', function () {
         method: 'POST',
         url: '/user',
         data: user,
-        success: function(uID) {
-            window.location.href = '/home/'+uID
+        success: function (uID) {
+            window.location.href = '/home/' + uID;
         }
     })
 
