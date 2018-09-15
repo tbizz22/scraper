@@ -25,7 +25,7 @@ module.exports = function (app) {
 
                 const title = $(listItem).find('div.itemImageLink').find('a.itemTitle').text();
                 const refPath = $(listItem).find('a.itemTitle').attr('href');
-                const url = `www.slickdeals.com${refPath}`;
+                const url = `http://www.slickdeals.com${refPath}`;
                 const vendor = $(listItem).find('a.itemStore').text();
                 const imgBod = $(listItem).find('div.imageContainer').first('img').text().trim();
                 const imageSrc = imgBod.split(' ')[1];
