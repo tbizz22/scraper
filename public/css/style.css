@@ -1,0 +1,146 @@
+.pt {
+    padding-top: 20px;
+}
+.pt3 {
+    padding-top: 3px;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.p20 {
+    padding: 20px;
+}
+
+.border {
+    border: 2px solid black;
+}
+
+.fontNunito {
+    font-family: 'Nunito Sans', sans-serif;
+    color:white;
+    font-weight: 300;
+    opacity: 1;
+}
+
+.bgCard {
+    opacity: .85;
+    width: 60%;    
+}
+
+.center {
+    width: 100px;
+    height: 100px;    
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+.hide {
+    display:hidden;
+}
+
+.z {
+    z-index: 999;
+}
+
+.nav-wrapper {
+    background-color:grey !important;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+.page-footer {
+    background-color: grey !important;
+}
+
+.tint {
+    opacity: .8;
+}
+
+.darkBG {
+    background-color: black;
+    opacity: .4;
+}
+
+
+/* sticky footer */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+      
+
+  .playerNumber {
+      font-weight: 800;
+      font-size: 5em;
+  }
+
+  .pbLogo{
+      max-height: 55px;
+  }
+
+  .blackText {
+      color: black;
+  }
+
+  .mobileCard {
+      max-height: 150px;
+      min-height: 150px;
+      min-width: 100px;
+      max-width: 100px
+
+  }
+
+  .playerNumberMobile {
+    font-weight: 800;
+    font-size: 3em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* sticky tabs */
+
+
+  .zno {
+      z-index: 1;
+  }
+
+
+  /* logo color */
+  .logoColor {
+      color: #f95428;
+      font-family: 'Nunito Sans';
+      font-weight: 800
+  }
+
+
+  /* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position:fixed ;
+    top: 0;
+    width: 100%
+  }
+  
+  /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
+  .content{
+      top:90px;
+  }

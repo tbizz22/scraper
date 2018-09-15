@@ -15,18 +15,28 @@ module.exports = function (app) {
 
             listItems.each(function (i, listItem) {
 
+                setImage = (imageSrc) => {
+                    if (imageSrc == undefined) {
+                        return null;
+                    } else {
+                        return imageSrc.split('\"')[1];
+                    }
+                }
+
                 const title = $(listItem).find('div.itemImageLink').find('a.itemTitle').text();
                 const refPath = $(listItem).find('a.itemTitle').attr('href');
                 const url = `www.slickdeals.com${refPath}`;
                 const vendor = $(listItem).find('a.itemStore').text();
-                const image = $(listItem).find('div.imageContainer').children().attr('src');
+                const imgBod = $(listItem).find('div.imageContainer').first('img').text().trim();
+                const imageSrc = imgBod.split(' ')[1];
+                const image = setImage(imageSrc)
                 // TODO: Fix this
                 const price = $(listItem).find('div.itemPrice').text().trim().replace(/\n/, '\\n').split('\\n')[0].trim();
                 const msrp = $(listItem).find('span.oldListPrice').text();
                 const popularity = $(listItem).find('div.likes').find('span.count').text();
                 const shipping = $(listItem).find('div.priceInfo').text();
                 
-
+                
                 db.Article.create({
                     title: title,
                     url: url,
