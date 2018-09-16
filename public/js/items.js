@@ -6,12 +6,12 @@
 
 
 
-  $(document).on('click','.item-details', function() {
-    const itemId = this.id
-    const currPath = window.location.pathname;
+//   $(document).on('click','.item-details', function() {
+//     const itemId = this.id
+//     const currPath = window.location.pathname;
 
-    $.ajax({
-        method: 'GET',
-        url: `${currPath}/${itemId}`
-    })
-})
+//     $.ajax({
+//         method: 'GET',
+//         url: `${currPath}/${itemId}`
+//     })
+// })

@@ -45,11 +45,20 @@ module.exports = function (app) {
     });
 
 
-    app.get('/home/:userId/:itemId', function(req,res) {
+    app.get('/home/:userId/:itemId', function (req, res) {
         const userId = req.params.userId;
         const itemId = req.params.itemId;
-        
-        res.render('item');
+        const mongoId = mongoose.Types.ObjectId(itemId)
+        console.log(mongoId)
 
+
+        db.Article.findById(mongoId).populate('comment').then(function (itemData) {
+            console.log(itemData)
+            res.render('item', {
+                itemData: itemData
+            }).catch(function (err) {
+                console.log(err)
+            })
+        })
     })
-}
+};
