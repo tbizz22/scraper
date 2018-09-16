@@ -21,7 +21,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Db connection
-mongoose.connect("mongodb://localhost/scraper", { useNewUrlParser: true });
+
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraper";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
 
 
 // Set Handlebars.
