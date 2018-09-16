@@ -1,11 +1,24 @@
 <div class="container">
     <div class="row">
         {{> item/item-block}}
-        
     </div>
-  
+    <div class="divider"></div>
+    <h4>Comments</h4>
+    <div class="row">
+        <ul class="collection">
+            {{#each comment}}
+                {{> comment/comment-block}}
+            {{/each}}
+        </ul>
+    </div>
 </div>
-
-
-
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating green"><i class="material-icons">save</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">open_in_new</i></a></li>
+    </ul>
+</div>
 <script type="text/javascript" src="/../js/item.js"></script>
