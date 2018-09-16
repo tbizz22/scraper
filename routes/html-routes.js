@@ -61,4 +61,13 @@ module.exports = function (app) {
             })
         })
     })
+
+    app.post('/home/:userId/:itemId', function(req, res) {
+        console.log(req.body)
+        db.Comment.create({
+            body: req.body.commentBody,
+            user: req.body.userId
+        })
+
+    })
 };
