@@ -40,10 +40,10 @@ const ArticleSchema = new Schema({
         type: Date,
         default: Date.Now
     },
-    comment: {
+    comments: [{
         type: Schema.Types.ObjectId,
         ref: 'Comment'
-    }
+    }]
 }, {
     timestamps: true
 });

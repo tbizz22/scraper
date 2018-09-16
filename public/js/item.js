@@ -31,7 +31,7 @@ $('#submit').on('click', function () {
         method: 'POST',
         url: `/home/${comment.userId}/${comment.itemId}`,
         data: comment,
-        success: function () {
+        success: function() {
             location.reload()
         }
     })
