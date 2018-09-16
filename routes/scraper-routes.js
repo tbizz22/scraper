@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 const db = require("../models");
 
 module.exports = function (app) {
-    app.get('/scrape', function (req, res) {
+    app.get('/api/scrape', function (req, res) {
         axios.get('http://www.slickdeals.com').then(function (html) {
             const $ = cheerio.load(html.data);
 
