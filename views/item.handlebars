@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        {{> item/item-block}}
+    </div>
+    <div class="divider"></div>
+    <h4>Comments</h4>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                    <label for="textarea1">Textarea</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <button class="btn waves-effect right grey waves-light" type="submit" id='submit' name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+    <div class="row">
+        <ul class="collection">
+            {{#if comment}}
+                {{#each comment}}
+                    {{> comment/comment-block}}
+                {{/each}}
+            {{else}}
+                <div>This item doesn't have any comments. Add one above to get the discussion started</div>
+            {{/if}}
+        </ul>
+    </div>
+</div>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">menu</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating green"><i class="material-icons">save</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">open_in_new</i></a></li>
+    </ul>
+</div>
+<script type="text/javascript" src="/../js/materialize.js"></script>
+<script type="text/javascript" src="/../js/item.js"></script>

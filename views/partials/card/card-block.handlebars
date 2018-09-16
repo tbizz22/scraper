@@ -1,16 +1,27 @@
-<div class="col s12 l4">
-    <div class="card">
-        <div class="card-image">
-            <img src="{{this.image}}">
-            <span class="card-title">{{this.price}}</span>
-            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
 
-        <div class="card-content truncate">
-            <p>{{this.title}}</p>
+
+<div class="col s12 l4">
+    <div class="card hoverable">
+        <div class="card-image">
+            <img class='mh' src="{{this.image}}">
+            <div class="pad card-title blue-grey ">
+                <span class="full-text-opacity left">{{this.price}}   </span>
+                <span class="full-text-opacity strike right">{{this.msrp}}</span>
+            </div>
+            <a class="btn-floating halfway-fab waves-effect waves-light red item-details" href="/home/{{@root.user}}/{{this._id}}" id="{{this._id}}"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+            <div class="row width100">
+                <p>{{this.title}}</p>
+            </div>
+            <div class="divider"></div>
+            <div class="row mt10">
+                <div class="col s10 left truncate">{{this.shipping}}</div>
+                <div class="col s2 right"><i class='material-icons'>thumb_up</i> {{this.popularity}}</div>
+            </div>
         </div>
         <div class="card-action">
-            <a href="{{this.url}}">View on Slick Deals</a>
+            <a href="{{this.url}}" target="_blank">View on Slick Deals</a>
         </div>
     </div>
 </div>

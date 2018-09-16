@@ -6,19 +6,13 @@ module.exports = function (app) {
         res.render("user")
     });
 
-    app.post('/user', function (req, res, data) {
+    app.post('/user', function (req, res) {
         console.log(req.body)
-
-
         db.User.create(req.body).then(function (dbUser) {
-            res.json(dbUser)
-            console.log(dbUser)
-            const uID = dbUser._id
-            res.send(uID)
-
+            const uID = dbUser._id;
+            res.json(uID)
         }).catch(function (err) {
-            // if the user already exists this gets that user
-            // res.json(err)            
+            // if the user already exists this gets that user                     
             const splitErr = err.errmsg.split('"')
             const dupKey = splitErr[1]
             // find the user based on the duplicate key in the user collection
@@ -33,18 +27,47 @@ module.exports = function (app) {
                 console.log(err)
             })
         })
-
     });
 
     app.get('/home/:id', function (req, res) {
+        const uID = req.params.id;
+        console.log(uID)
         db.Article.find({}).sort({
             createdAt: -1
         }).then(function (dbArticles) {
             res.render('items', {
-                items: dbArticles
+                items: dbArticles,
+                user: uID
             });
         })
 
-      
+
     });
-}
+
+
+    app.get('/home/:userId/:itemId', function (req, res) {
+        const userId = req.params.userId;
+        const itemId = req.params.itemId;
+        const mongoId = mongoose.Types.ObjectId(itemId)
+        console.log(mongoId)
+
+
+        db.Article.findById(mongoId).populate('comment').then(function (itemData) {
+            console.log(itemData)
+            res.render('item', {
+                itemData: itemData
+            }).catch(function (err) {
+                console.log(err)
+            })
+        })
+    })
+
+    app.post('/home/:userId/:itemId', function(req, res) {
+        console.log(req.body)
+        db.Comment.create({
+            body: req.body.commentBody,
+            user: req.body.userId
+        })
+
+    })
+};

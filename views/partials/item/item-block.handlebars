@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row mt40">
+        <div class="center-align">
+            <h3>{{itemData.title}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m4">
+            <img src="{{itemData.image}}" alt=""></img>
+        </div>
+        <div class="col m8">
+            <table class="highlight">
+                <tbody>
+                    <tr>
+                        <td>Vendor</td>
+                        <td>{{itemData.vendor}}</td>
+                    </tr>
+                    <tr>
+                        <td>Slick Price</td>
+                        <td>{{itemData.price}}</td>
+                    </tr>
+                    <tr>
+                        <td>Original Price</td>
+                        <td>{{itemData.msrp}}</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>{{itemData.shipping}}</td>
+                    </tr>
+                    <tr>
+                        <td>Popularity</td>
+                        <td> <span> <i class='material-icons'>thumb_up</i> {{itemData.popularity}}</span></td>
+                    </tr>     
+                </tbody>
+            </table>           
+        </div>
+    </div>
+</div>
