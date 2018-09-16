@@ -115,3 +115,7 @@ main {
     max-height: 250px;
     min-height: 250px;
 }
+
+.width100 {
+width: 100%;
+}

@@ -1,15 +1,17 @@
+
+
 <div class="col s12 l4">
     <div class="card hoverable">
         <div class="card-image">
             <img class='mh' src="{{this.image}}">
             <div class="pad card-title blue-grey ">
-                <span class="full-text-opacity left">{{this.price}}</span>
+                <span class="full-text-opacity left">{{this.price}}   </span>
                 <span class="full-text-opacity strike right">{{this.msrp}}</span>
             </div>
-            <a class="btn-floating halfway-fab waves-effect waves-light red item-details" id="{{this._id}}"><i class="material-icons">add</i></a>
+            <a class="btn-floating halfway-fab waves-effect waves-light red item-details" href="/home/{{@root.user}}/{{this._id}}" id="{{this._id}}"><i class="material-icons">add</i></a>
         </div>
         <div class="card-content">
-            <div class="row">
+            <div class="row width100">
                 <p>{{this.title}}</p>
             </div>
             <div class="divider"></div>

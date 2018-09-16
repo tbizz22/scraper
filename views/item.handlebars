@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        {{> item/item-block}}
+        <div></div>
+    </div>
+    <div class="row">
+        {{#each comment}}
+            {{> comment/comment-block}}
+        {{/each}}
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="../js/item.js"></script>

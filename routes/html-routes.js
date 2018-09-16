@@ -30,14 +30,26 @@ module.exports = function (app) {
     });
 
     app.get('/home/:id', function (req, res) {
+        const uID = req.params.id;
+        console.log(uID)
         db.Article.find({}).sort({
             createdAt: -1
         }).then(function (dbArticles) {
             res.render('items', {
-                items: dbArticles
+                items: dbArticles,
+                user: uID
             });
         })
 
 
     });
+
+
+    app.get('/home/:userId/:itemId', function(req,res) {
+        const userId = req.params.userId;
+        const itemId = req.params.itemId;
+        
+        res.render('item');
+
+    })
 }
