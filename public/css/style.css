@@ -119,3 +119,7 @@ main {
 .width100 {
 width: 100%;
 }
+
+.pl20 {
+    padding-left: 20px;
+}

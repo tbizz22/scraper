@@ -52,25 +52,32 @@ module.exports = function (app) {
         console.log(mongoId)
 
 
-        db.Article.findById(mongoId).populate('comments').then(function (itemData) {
-            console.log(itemData)
-            res.render('item', {
-                itemData: itemData,
-                comment: itemData.comments
-            }).catch(function (err) {
-                console.log(err)
+        db.Article
+            .findById(mongoId)
+            .populate({
+                path: 'comments',
+                populate: {
+                    path: 'user'
+                }
             })
-        })
+            .then(function (itemData) {
+                console.log(itemData)
+                res.render('item', {
+                        itemData: itemData,
+                        comment: itemData.comments
+                    })
+                    .catch(function (err) {
+                        console.log(err)
+                    })
+            })
     })
 
     app.post('/home/:userId/:itemId', function (req, res) {
-        console.log('line 66 Req Body'+req.body)
         const commentObj = {
             body: req.body.commentBody,
             user: req.body.userId
         };
 
-        console.log('line 72 commentobj'+ commentObj)
         db.Comment.create(commentObj).then(function (dbComment) {
             return db.Article.findOneAndUpdate({
                 _id: req.body.itemId

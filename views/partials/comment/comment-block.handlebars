@@ -1,2 +1,15 @@
-<li class="collection-item">Alvin</li>
-  
+<li id={{_id}} data-creator="{{user._id}}" class="collection-item">
+    <div class="row">
+        <span class="avatar left"><img src="https://api.adorable.io/avatars/40/{{user._id}}.png"></img> </span>
+        <div class="user-name dark-grey-text  pl20 left">
+            {{user.name}}
+        </div>       
+        <div class="comment-created  right">
+            {{createdAt}}
+        </div>
+    </div>
+    <div class="flow-text">
+
+        {{body}}
+    </div>
+</li>

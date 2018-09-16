@@ -9,8 +9,8 @@ const CommentSchema = new Schema({
         required: true
     },
     user: {
-        type: String,
-        ref: false
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, {
     timestamps: true
