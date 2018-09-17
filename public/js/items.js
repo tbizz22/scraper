@@ -17,11 +17,11 @@
 // })
 
 
-$('#viewArticles').on('click', function() {
-    const urlParam = window.location.href.split('\/');
+// $('#viewArticles').on('click', function() {
+//     const urlParam = window.location.href.split('\/');
 
-    $.ajax({
-        method: 'GET',
-        url: `/home/${userId}/savedItems`    
-    })
-})
+//     $.ajax({
+//         method: 'GET',
+//         url: `/home/${userId}/savedItems`    
+//     })
+// })

@@ -96,7 +96,7 @@ module.exports = function (app) {
         }).catch(function (err) {
             res.json(err);
         });
-    })
+    });
 
     app.post('/home/:userId/:itemId/saveArticle', function (req, res) {
         db.User.findOneAndUpdate({
@@ -112,11 +112,22 @@ module.exports = function (app) {
         }).catch(function (error) {
             res.json(err);
         });
-    })
+    });
 
-    app.get('/home/:userId/savedItems', function(req, res) {
-        db.User.findById(req.body.params).then(function(dbUser) {
-            console.log(dbUser)
-        })
-    })
+    app.get('/savedItems/:userId', function (req, res) {
+        db.User.findById(req.params.userId)
+            .populate('articles')
+            .then(function (dbUser) {
+                console.log(dbUser)
+                res.render('savedItems', {
+                    items: dbUser.articles,
+                    user: req.params.userId
+                })
+
+            }).catch(function (err) {
+                res.json(err)
+            })
+
+
+    });
 };
