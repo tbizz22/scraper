@@ -39,3 +39,26 @@ $('#submit').on('click', function () {
         }
     })
 })
+
+$('.saveItem').on('click', function() {
+    event.preventDefault();
+    const urlParam = window.location.href.split('\/');
+    console.log(this.id)
+
+    const itemClicked = urlParam[5];
+    const userSaving = urlParam[4]
+
+    const saveArticleObjSend = {
+        userId: userSaving,
+        itemId: itemClicked
+    };
+
+    $.ajax({
+        method: 'POST',
+        url: `/home/${saveArticleObjSend.userId}/${saveArticleObjSend.itemId}/saveArticle`,
+        data: saveArticleObjSend,
+        success: function() {
+           alert("That Worked")
+        }
+    })
+})
