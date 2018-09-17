@@ -15,3 +15,13 @@
 //         url: `${currPath}/${itemId}`
 //     })
 // })
+
+
+// $('#viewArticles').on('click', function() {
+//     const urlParam = window.location.href.split('\/');
+
+//     $.ajax({
+//         method: 'GET',
+//         url: `/home/${userId}/savedItems`    
+//     })
+// })
