@@ -58,7 +58,7 @@ $('.saveItem').on('click', function() {
         url: `/home/${saveArticleObjSend.userId}/${saveArticleObjSend.itemId}/saveArticle`,
         data: saveArticleObjSend,
         success: function() {
-           alert("That Worked")
+           location.reload();
         }
     })
 })

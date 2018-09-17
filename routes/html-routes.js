@@ -113,4 +113,10 @@ module.exports = function (app) {
             res.json(err);
         });
     })
+
+    app.get('/home/:userId/savedItems', function(req, res) {
+        db.User.findById(req.body.params).then(function(dbUser) {
+            console.log(dbUser)
+        })
+    })
 };
